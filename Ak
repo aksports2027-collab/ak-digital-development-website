@@ -1,0 +1,552 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050b18">
+  <meta name="description" content="AK Digital Development LTD. builds modern software, mobile apps, websites and e-commerce solutions for businesses.">
+  <title>AK Digital Development LTD. | Software & E-commerce</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #050b18;
+      color: #f4f8ff;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5, 11, 24, .92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -.6px;
+    }
+
+    .logo span {
+      color: #08caff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      font-size: 13px;
+      color: #b7c4d8;
+    }
+
+    .nav-links a:hover {
+      color: #08caff;
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      color: white;
+      border: 1px solid #263750;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 20px;
+    }
+
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 80% 35%, rgba(0,174,255,.16), transparent 40%),
+        radial-gradient(ellipse at 15% 90%, rgba(0,92,255,.13), transparent 40%);
+    }
+
+    .hero-content {
+      max-width: 780px;
+      padding: 100px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      border: 1px solid rgba(8,202,255,.35);
+      color: #37d5ff;
+      background: rgba(8,202,255,.07);
+      border-radius: 30px;
+      padding: 7px 15px;
+      font-size: 12px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 7vw, 72px);
+      line-height: 1.12;
+      letter-spacing: -2.8px;
+      margin-bottom: 25px;
+    }
+
+    h1 span {
+      color: #08caff;
+    }
+
+    .hero p {
+      color: #aab9ce;
+      max-width: 620px;
+      font-size: 16px;
+      margin-bottom: 35px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 23px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .btn-primary {
+      background: #08caff;
+      color: #03101d;
+      box-shadow: 0 0 25px rgba(8,202,255,.18);
+    }
+
+    .btn-primary:hover {
+      background: #65dfff;
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      border: 1px solid #34445c;
+      color: #e4edfa;
+    }
+
+    .btn-outline:hover {
+      border-color: #08caff;
+      color: #08caff;
+    }
+
+    section {
+      padding: 95px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 48px;
+    }
+
+    .section-heading small {
+      color: #08caff;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(29px, 4vw, 43px);
+      margin: 12px 0;
+      letter-spacing: -1.3px;
+    }
+
+    .section-heading p {
+      color: #98a9c0;
+      font-size: 14px;
+    }
+
+    .about {
+      background: #080f20;
+    }
+
+    .about-box {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about-box p {
+      color: #aab9ce;
+      font-size: 15px;
+    }
+
+    .services-grid,
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card,
+    .project-card {
+      background: linear-gradient(145deg, #101d32, #091323);
+      border: 1px solid rgba(130,170,220,.12);
+      border-radius: 15px;
+      padding: 27px;
+      transition: .3s;
+    }
+
+    .service-card:hover,
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(8,202,255,.5);
+      box-shadow: 0 12px 35px rgba(0,0,0,.2);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: #08caff;
+      background: rgba(8,202,255,.1);
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3,
+    .project-card h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    .service-card p,
+    .project-card p {
+      color: #9cacc2;
+      font-size: 13px;
+    }
+
+    .projects {
+      background: #080f20;
+    }
+
+    .project-card {
+      min-height: 190px;
+    }
+
+    .project-tag {
+      color: #08caff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .contact-box {
+      text-align: center;
+      background:
+        radial-gradient(ellipse at center, rgba(0,174,255,.13), transparent 65%),
+        #0a1426;
+      border: 1px solid rgba(8,202,255,.18);
+      border-radius: 20px;
+      padding: 65px 25px;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: 15px;
+    }
+
+    .contact-box p {
+      color: #aab9ce;
+      margin-bottom: 28px;
+      font-size: 14px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 28px 0;
+      color: #8494aa;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    footer strong {
+      color: #08caff;
+    }
+
+    @media (max-width: 760px) {
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: #080f20;
+        padding: 22px 5%;
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: 1px solid #203047;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hero {
+        min-height: 570px;
+      }
+
+      .hero-content {
+        padding: 80px 0;
+      }
+
+      h1 {
+        letter-spacing: -1.5px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .services-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="#home" class="logo">AK <span>DIGITAL</span></a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <span class="eyebrow">SOFTWARE • TECHNOLOGY • E-COMMERCE</span>
+
+        <h1>
+          Building Digital<br>
+          Solutions for <span>Modern Businesses.</span>
+        </h1>
+
+        <p>
+          AK Digital Development LTD. focuses on modern software,
+          mobile applications, websites and e-commerce solutions
+          that help businesses grow in the digital world.
+        </p>
+
+        <div class="actions">
+          <a href="#services" class="btn btn-primary">Explore Services</a>
+          <a href="#contact" class="btn btn-outline">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-heading">
+        <small>Who We Are</small>
+        <h2>Technology with a Purpose</h2>
+      </div>
+
+      <div class="about-box">
+        <p>
+          AK Digital Development LTD. is a software and e-commerce
+          focused company. Our goal is to develop practical digital
+          solutions for businesses, organizations and entrepreneurs.
+          We believe technology should make everyday work simpler,
+          smarter and more accessible.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-heading">
+        <small>What We Do</small>
+        <h2>Our Services</h2>
+        <p>Digital solutions designed around real business needs.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">⌘</div>
+          <h3>Software Development</h3>
+          <p>Custom software solutions for business operations and everyday office work.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">▣</div>
+          <h3>Mobile App Development</h3>
+          <p>Modern Android and mobile application development for digital services.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">⌘</div>
+          <h3>Website Development</h3>
+          <p>Responsive, professional websites for companies, brands and businesses.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">◇</div>
+          <h3>E-commerce Solutions</h3>
+          <p>Online shopping platforms and digital storefronts for sellers and customers.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">▤</div>
+          <h3>Business Software</h3>
+          <p>Useful digital tools for business management, workflow and productivity.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">◎</div>
+          <h3>Digital Solutions</h3>
+          <p>Technology-focused solutions to support digital transformation.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-heading">
+        <small>Our Work</small>
+        <h2>Projects & Platforms</h2>
+        <p>Explore some of the digital initiatives associated with our company.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <span class="project-tag">Digital Platform</span>
+          <h3>EarnScope</h3>
+          <p>A developing platform concept focused on digital skills and online work opportunities.</p>
+        </div>
+
+        <div class="project-card">
+          <span class="project-tag">E-commerce</span>
+          <h3>Near Shop</h3>
+          <p>A developing marketplace concept connecting local sellers and customers.</p>
+        </div>
+
+        <div class="project-card">
+          <span class="project-tag">Promotion</span>
+          <h3>BrandCrest</h3>
+          <p>A brand promotion initiative focused on digital marketing and online visibility.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <span class="eyebrow">LET'S WORK TOGETHER</span>
+        <h2>Have a Project in Mind?</h2>
+        <p>Let's discuss how digital technology can help your business.</p>
+        <a class="btn btn-primary" href="mailto:akdigitaldevelopmentltd@gmail.com">
+          Email Our Team
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> <strong>AK Digital Development LTD.</strong> All rights reserved.</p>
+    <p>Software Company & E-commerce Company</p>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+
+  menuBtn.addEventListener('click', function () {
+    const isOpen = navLinks.classList.toggle('show');
+    menuBtn.setAttribute('aria-expanded', isOpen);
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      navLinks.classList.remove('show');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
